@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Add your custom styles here */
+
+        .reservation-details {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .reservation-details h1,
+        .reservation-details h2,
+        .reservation-details h3 {
+            color: #333;
+        }
+
+        .table-info img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .order-details {
+            margin-top: 20px;
+        }
+
+        .order-details p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+
+        .edit-button,
+        .delete-form {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .edit-button {
+            background-color: #f39c12;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .delete-form {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container reservation-details" style="margin-top:80px">
+
+        <!-- Reservation Information -->
+        <div class="row">
+            <div style="display:flex;align-items: center;justify-content:center;gap:30px">            
+            <div class="col-md-5" style="border:1px solid #222">
+                <h2>Reservation Details</h2>
+                <p><strong>User:</strong> {{ reservation.user.username }}</p>
+                <p><strong>Restaurant:</strong> {{ reservation.restaurant.libelle }}</p>
+                <p><strong>Content:</strong> {{ reservation.content }}</p>
+                <p><strong>Verified:</strong> {{ reservation.isverified ? 'Yes' : 'No' }}</p>
+            </div>
+                <div class="col-md-5" style="border:1px solid #222;">
+                    <h2>Table Information</h2>
+                    <p><strong>Table Number:</strong> {{ reservation.table.number }}</p>
+                    <p><strong>Number of Places:</strong> {{ reservation.table.numberOfPlaces }} person</p>
+                    <p><strong>Reserved:</strong> {{ reservation.table.isReserved ? 'Yes' : 'No' }}</p>
+                    <p><strong>Location:</strong> {{ reservation.table.location ?: 'Not specified' }}</p>
+                </div>
+            </div>
+        <div class="order-details" style="text-align:center">
+        <h1 class="mt-4 mb-4">User Orders</h1>
+        <div  style="border:1px solid #222;">
+            {% for order in userOrders %}
+                <p><strong>Order ID:</strong> {{ order.id }}</p>
+                <p><strong>Date Placed:</strong> {{ order.datePlaced|date('Y-m-d H:i:s') }}</p>
+                <p><strong>Status:</strong> {{ order.status }}</p>
+                <p><strong>User:</strong> {{ order.user.username }}</p>
+            {% endfor %}
+        <div>
+        </div>
+
+        </div>
+
+        <!-- Order Information -->
+
+
+        <!-- Buttons -->
+        <a class="back-button" href="{{ path('app_reservation_index') }}">Back</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="edit-button" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Edit</a>
+            {{ include('reservation/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
+{% endblock %}

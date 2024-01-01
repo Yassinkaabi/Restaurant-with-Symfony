@@ -4,17 +4,159 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        {# <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"> #}
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+        {# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> #}
+        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+        <script src="{{ asset('js/main.js') }}"></script>
         {% block stylesheets %}
-            {{ ux_controller_link_tags() }}
-            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body >
+
+	<div class="nav-one">
+        <div class="informarion">
+            <p>Email: yassin@chmoula.tn</p>
+            <p>(+216) 43 444 044</p>
+        </div>
+        <div class="informarion">
+            <div class="auth-btn">
+                {% if app.user %}
+                    <p><a href="{{ path('app_logout') }}">Logout </a></p>
+                    {% else %}
+                    <p><a href="{{ path('app_login') }}">Login </a></p>
+                    <p><a style="color:#222" class="register" href="{{ path('app_register') }}">Register </a></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="{{path('app_home') }}">Chmou.<span>la</span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="{{ path('app_home') }}" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="{{ path('app_about') }}" class="nav-link">About</a></li>
+					{# <li class="nav-item"><a href="chef.html" class="nav-link">Chef</a></li> #}
+					<li class="nav-item"><a href="{{ path('app_menu_index') }}" class="nav-link">Menu</a></li>
+					<li class="nav-item"><a href="{{ path('app_reservation_index') }}" class="nav-link">Reservation</a></li>
+					{# <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> #}
+					<li class="nav-item"><a href="{{ path('app_contact') }}" class="nav-link">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+{% for messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-success" style="position:absolute;top:155px">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+		
         {% block body %}{% endblock %}
     </body>
+    <footer class="ftco-footer ftco-no-pb ftco-section" style="margin-top:150px">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-6 col-lg-4">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">CHMOU.LA</h2>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+					</div>
+						<h6 style="color:#fff" >Email : yassin@chmoula.tn</h6>
+						<h6 style="color:#fff" >Phone : (+216) 43 444 044</h6>
+				</div>
+				<div class="col-md-6 col-lg-3">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Open Hours</h2>
+						<ul class="list-unstyled open-hours">
+							<li class="d-flex"><span>Monday</span><span style="color:#fff">9:00 - 24:00</span></li>
+							<li class="d-flex"><span>Tuesday</span><span style="color:#fff"> 9:00 - 24:00</span></li>
+							<li class="d-flex"><span>Wednesday</span><span style="color:#fff">9:00 - 24:00</span></li>
+							<li class="d-flex"><span>Thursday</span><span style="color:#fff">9:00 - 24:00</span></li>
+							<li class="d-flex"><span>Friday</span><span style="color:#fff">9:00 - 02:00</span></li>
+							<li class="d-flex"><span>Saturday</span><span style="color:#fff">9:00 - 02:00</span></li>
+							<li class="d-flex"><span>Sunday</span><span style="color:#fff"> Closed</span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-5">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Instagram</h2>
+						<div class="thumb d-sm-flex">
+							<a href="#" class="thumb-menu img" style="background-image: url(/image/insta-1.jpg);">
+							</a>
+							<a href="#" class="thumb-menu img" style="background-image: url(/image/insta-2.jpg);">
+							</a>
+							<a href="#" class="thumb-menu img" style="background-image: url(/image/insta-3.jpg);">
+							</a>
+						</div>
+						<div class="thumb d-flex">
+							<a href="#" class="thumb-menu img" style="background-image: url(/image/insta-4.jpg);">
+							</a>
+							<a href="#" class="thumb-menu img" style="background-image: url(/image/insta-5.jpg);">
+							</a>
+							<a href="#" class="thumb-menu img" style="background-image: url(/image/insta-6.jpg);">
+							</a>
+						</div>
+					</div>
+				</div>
+				{# <div class="col-md-6 col-lg-3">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Newsletter</h2>
+						<p>Far far away, behind the word mountains, far from the countries.</p>
+						<form action="#" class="subscribe-form">
+							<div class="form-group">
+								<input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
+								<input type="submit" value="Subscribe" class="form-control submit px-3">
+							</div>
+						</form>
+					</div>
+				</div> #}
+			</div>
+		</div>
+		<div class="container-fluid px-0 bg-danger py-3">
+			<div class="row no-gutters">
+				<div class="col-md-12 text-center">
+
+					<p class="mb-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="{{ path('app_home') }}" target="_blank">CHMOULA</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+		<script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+		<script src="{{ asset('js/popper.min.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+		<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+		<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+		<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+		<script src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+		<script src="{{ asset('js/scrollax.min.js') }}"></script>
+		<script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false') }}"></script>
+		<script src="{{ asset('js/google-map.js') }}"></script>
+		<script src="{{ asset('js/main.js') }}"></script>
 </html>

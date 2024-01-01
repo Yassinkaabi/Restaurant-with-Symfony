@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('image/bg_5.jpg');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate text-center mb-5">
+        <h1 class="mb-2 bread">About</h1>
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>About <i class="fa fa-chevron-right"></i></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="ftco-section ftco-no-pt ftco-no-pb mt-5">
+ <div class="container">
+  <div class="row d-flex">
+    <div class="col-md-6 d-flex">
+     <div class="img img-2 w-100 mr-md-2" style="background-image: url(image/bg_6.jpg);"></div>
+     <div class="img img-2 w-100 ml-md-2" style="background-image: url(image/bg_4.jpg);"></div>
+   </div>
+   <div class="col-md-6 ftco-animate makereservation p-4 p-md-5">
+     <div class="heading-section ftco-animate mb-5">
+      <span class="subheading">This is our secrets</span>
+      <h2 class="mb-4">Perfect Ingredients</h2>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+      </p>
+      <p><a href="#" class="btn btn-primary">Learn more</a></p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb ftco-intro mt-5 mb-5" style="background-color:#E52B34;">
+ <div class="container py-5">
+  <div class="row py-2">
+   <div class="col-md-12 text-center">
+					<h2>Nous préparons des aliments délicieux  &amp; nutritifs</h2>
+					<a href="{{ path('app_reservation_new') }}" class="btn btn-white btn-outline-white">Réservez une table maintenant</a>
+  </div>
+</div>
+</div>
+</section>
+
+	<section class="ftco-section testimony-section" style="background-image: url(image/bg_5.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center mb-3 pb-2">
+				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<span class="subheading">Testimony</span>
+					<h2 class="mb-4">Happy Customer</h2>
+				</div>
+			</div>
+			<div class="row ftco-animate justify-content-center">
+				<div class="col-md-7">
+					<div class="carousel-testimony owl-carousel ftco-owl">
+							{% for comment in comments %}
+						<div class="item">
+							<div class="testimony-wrap text-center">
+								<div class="text p-3">
+									<p class="mb-4">{{ comment.content }}</p>
+									<div class="user-img mb-4" style="background-image: url(image/person_1.jpg)">
+										<span class="quote d-flex align-items-center justify-content-center">
+											<i class="fa fa-quote-left"></i>
+										</span>
+									</div>
+									<p class="name">{{ comment.user }}</p>
+									<span class="position">Customer</span>
+								</div>
+							</div>
+						</div>
+							{% endfor %}
+					</div>
+				</div>
+				<div style="text-align:center; margin-top:20px">
+					<button class="btn btn-white btn-outline-white" onclick="showForm()">laissez un commentaire</button>
+					<div id="commentForm" style="display: none;"> 
+					{% if app.user %}
+						{{ form_start(form, {'attr': {'class': 'comment-form'}}) }}
+						<div class="form-group">
+							{{ form_label(form.content) }}
+							{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<button type="submit" class="btn btn-primary">Envoyer</button>
+						{{ form_end(form) }}
+						<div class="comment-success-message mt-4" style="display: none; color:#fff">Le commentaire a été envoyé avec succès.</div>
+					{% else %}
+						<div class="alert alert-warning mt-5" role="alert">
+							Vous devez vous connecter pour laisser un commentaire. <a href="{{ path('app_login') }}">connexion</a>
+						</div>
+					{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+							$(document).ready(function () {
+								$('.comment-form').submit(function (e) {
+									e.preventDefault(); // Prevent the default form submission
+
+									var form = $(this);
+									var url = form.attr('action');
+									var method = form.attr('method');
+									var data = form.serialize();
+
+									// Make the AJAX request
+									$.ajax({
+										url: url,
+										method: method,
+										data: data,
+										success: function (response) {
+											// Display the success message and hide the form
+											$('.comment-form').hide();
+											$('.comment-success-message').show();
+											setTimeout(function () {
+                            					$('.comment-success-message').hide();
+                        					}, 3000);
+										},
+										error: function (error) {
+											console.log('Error:', error);
+										}
+									});
+								});
+							});
+</script>
+<script>
+function showForm() {
+    var commentForm = document.getElementById('commentForm');
+    var currentDisplay = commentForm.style.display;
+    commentForm.style.display = (currentDisplay === 'block' || currentDisplay === '') ? 'none' : 'block';
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        <div class="container mt-5" style="min-height: 400px;"> 
+            <h1>Liste des contacts</h1>
+    
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom Complet</th>
+                            <th>Email</th>
+                            <th>Sujet</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contact %}
+                            <tr>
+                                <td>{{ contact.id }}</td>
+                                <td>{{ contact.username }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.subject }}</td>
+                                <td>{{ contact.message }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endblock %}
+    

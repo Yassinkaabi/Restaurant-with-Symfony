@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Food{% endblock %}
+
+{% block body %}
+    <div class="container" style="padding:50px 20px 0 20px">
+        <h1>Create New Food</h1>
+        {{ form_start(form, {'attr': {'class': 'mt-4'}}) }}
+
+        <div class="form-group">
+            {{ form_label(form.name, 'Name') }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.name) }}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            {{ form_label(form.description, 'Description') }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.price, 'Price') }}
+            {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.price) }}
+            </div>
+        </div>
+
+        <div class="form-check mt-4">
+            {{ form_widget(form.is_available, {'attr': {'class': 'form-check-input'}}) }}
+            {{ form_label(form.is_available, 'Is Available', {'label_attr': {'class': 'form-check-label'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.is_available) }}
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            {{ form_label(form.menuItem, 'Menu Item') }}
+            {{ form_widget(form.menuItem, {'attr': {'class': 'form-control'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.menuItem) }}
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            {{ form_label(form.imageFile, 'Food Image') }}
+            {{ form_widget(form.imageFile, {'attr': {'class': 'form-control-file'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.imageFile) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+        {{ form_end(form) }}
+
+        <a href="{{ path('app_food_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+    </div>
+{% endblock %}

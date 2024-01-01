@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="mb-3">
+            Hello {{ app.user.username }} ! 
+        </div>
+    {% endif %}
+{% endblock %}

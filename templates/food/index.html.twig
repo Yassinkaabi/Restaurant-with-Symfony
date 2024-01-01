@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Food index{% endblock %}
+
+{% block body %}
+<div class="container" style="margin-top:100px">
+    <h1>Food index</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Is_available</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for food in food %}
+            <tr >
+                <td>{{ food.id }}</td>
+                <td>{{ food.name }}</td>
+                <td>{{ food.description }}</td>
+                <td>{{ food.price }}</td>
+                <td>{{ food.isAvailable ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_food_show', {'id': food.id}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_food_edit', {'id': food.id}) }}">edit</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+   {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('app_food_new') }}">Create new</a>
+{% else %}
+    <a href="{{ path('app_menu_index') }}">aller au menu</a>
+{% endif %}
+    <script src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}

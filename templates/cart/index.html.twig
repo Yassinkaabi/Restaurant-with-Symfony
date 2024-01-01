@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+            <a class="btn btn-success" href="{{ path('app_menu_index') }}">retour</a>
+            </br></br>
+                <h1>Panier</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Description</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for element in data %}
+                            <tr>
+                                <td>{{ element.food.name }}</td>
+                                <td>{{ element.food.description }}</td>
+                                <td>{{ element.food.price  }} dt</td>
+                                <td>{{ element.quantity }}</td>
+                                <td>{{ element.quantity * element.food.price  }} dt</td>
+                                <td>
+                                    <a class="btn btn-success" href="{{ path('cart_add',{'id': element.food.id}) }}">+</a>
+                                    <a class="btn btn-warning" href="{{ path('cart_decrement',{'id': element.food.id}) }}">-</a>
+                                    <a class="btn btn-danger" href="{{ path('cart_delete',{'id': element.food.id}) }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">Votre panier est vide</td>
+                            </tr>    
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">Total</td>
+                            <td>{{ total }} dt</td>
+                            <td>
+                                <a href="{{ path('cart_remove') }}" class="btn btn-danger">Vider</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <a href="{{ path('app_orders_add') }}" class="btn btn-primary">Valider le panier</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

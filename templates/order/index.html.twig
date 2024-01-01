@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Orders</h1>
+<div class="ps-5 pe-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date Placed</th>
+                <th>Status</th>
+                <th>User</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.datePlaced|date('Y-m-d H:i:s') }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.user }}</td>
+                    <td> 
+                    {# {% if is_granted('ROLE_ADMIN')  %}
+                        <a href="{{ path('app_orders_edit', {'id': order.id}) }}" class="btn btn-primary">Edit</a>
+                    {% endif %}  #}
+                        <a href="{{ path('app_orders_show', {'id': order.id}) }}" class="btn btn-primary">Show</a>
+                    </td>
+            {% else %}
+            <tr> 
+                <td colspan="4">
+                    no orders 
+                </td>
+            </tr>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

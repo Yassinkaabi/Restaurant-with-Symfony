@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/image/bg_5.jpg');" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 text-center mb-5">
+					<h1 class="mb-2 bread">Book A Table Now</h1>
+					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Reservation <i class="fa fa-chevron-right"></i></span></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% if app.user  %}
+    <div class="container reservation-container">
+    <div class="info-section">
+        <h1>Reservation :</h1>
+        {% for reservation in reservations %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">Utilisateur: {{ reservation.user.username }}</p>
+                    <p class="card-text">Contenu: {{ reservation.content }}</p>
+                    <p class="card-text">Restaurant: {{ reservation.restaurant }}</p>
+                    <p class="card-text">Table: {{ reservation.table }}</p>
+                    <p class="card-text">Heure de réservation: {{ reservation.reservationTime ? reservation.reservationTime.format('H:i d-m-Y') : '' }}</p>
+                    <p class="card-text">Réservé: {{ reservation.isverified ? 'Yes' : 'No' }}</p>
+                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}" class="btn btn-info">Show</a>
+                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn btn-secondary">Edit</a>
+                    <a href="{{ path('app_menu_index') }}" class="btn btn-primary">Go to order Foods</a>
+                </div>
+            </div>
+        {% endfor %}
+		{# {% if app.user ==  %}{% endif %} #}
+            {# <a href="{{ path('commandes_show', {'id': order.id}) }}" class="btn btn-secondary">Edit</a> #}
+			<div style="display:flex;align-items:center;justify-content:center;margin-top:20px">
+    			<a href="{{ path('app_reservation_new') }}" class="btn btn-success">Book a tabe now</a>
+			</div>
+			<section class="ftco-section">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="col-md-6 d-flex">
+					<div class="img img-2 w-100 mr-md-2" style="background-image: url(/image/bg_6.jpg);"></div>
+					<div class="img img-2 w-100 ml-md-2" style="background-image: url(/image/bg_4.jpg);"></div>
+				</div>
+				<div class="col-md-6  makereservation p-4 p-md-5">
+					<div class="heading-section  mb-5">
+						<span style="color:#222;" class="subheading">This is our secrets</span>
+						<h2  style="color:#222;" class="mb-4">Perfect Ingredients with <span style="color:red">CHMOULA</span> </h2>
+						<p style="color:#222;"> 
+                Découvrez le plaisir culinaire ultime dans une atmosphère élégante et chaleureuse. Notre menu exquis, 
+                préparé par des chefs passionnés, met en valeur des saveurs exceptionnelles avec des ingrédients frais et
+                de qualité. Que ce soit pour une occasion spéciale, un dîner romantique ou simplement pour savourer une 
+                délicieuse soirée entre amis, [Nom de votre Restaurant] est l'endroit idéal.
+        
+						</p>
+						<p><a  style="color:#222;"href="#" class="btn btn-primary">Learn more</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    </div>
+    {# <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Book a tabe now</a> #}
+</div>
+{% else %}
+	<div style="display:flex;align-items:center;justify-content:center;margin-top:20px">
+    		<a href="{{ path('app_reservation_new') }}" class="btn btn-success">Book a tabe now</a>
+	</div>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="col-md-6 d-flex">
+					<div class="img img-2 w-100 mr-md-2" style="background-image: url(/image/bg_6.jpg);"></div>
+					<div class="img img-2 w-100 ml-md-2" style="background-image: url(/image/bg_4.jpg);"></div>
+				</div>
+				<div class="col-md-6  makereservation p-4 p-md-5">
+					<div class="heading-section  mb-5">
+						<span style="color:#222;" class="subheading">This is our secrets</span>
+						<h2  style="color:#222;" class="mb-4">Perfect Ingredients with <span style="color:red">CHMOULA</span> </h2>
+						<p style="color:#222;"> 
+                Découvrez le plaisir culinaire ultime dans une atmosphère élégante et chaleureuse. Notre menu exquis, 
+                préparé par des chefs passionnés, met en valeur des saveurs exceptionnelles avec des ingrédients frais et
+                de qualité. Que ce soit pour une occasion spéciale, un dîner romantique ou simplement pour savourer une 
+                délicieuse soirée entre amis, [Nom de votre Restaurant] est l'endroit idéal.
+        
+						</p>
+						<p><a  style="color:#222;"href="#" class="btn btn-primary">Learn more</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endif %}
+{% endblock %}

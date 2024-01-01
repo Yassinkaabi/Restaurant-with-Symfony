@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Food{% endblock %}
+
+{% block body %}
+ <div class="container mt-5" >
+ <div style="margin:20px 0 20px 0">
+    <a href="{{ path('app_food_index') }}"><--back to list</a>
+</div>
+ <div style="display:flex;justify-content:space-between;align-items:center  ">
+    <h1>Food</h1>
+    <div>
+    <a class="btn btn-success" href="{{ path('cart_add', {'id':food.id}) }}">Ajouter au panier</a>
+    </div>
+</div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="col-sm-3">Image</th>
+                <td class="col-sm-9"><img width=200  src="{{ vich_uploader_asset(food, 'imageFile') }}"></td>
+            </tr>
+            <tr>
+                <th class="col-sm-3">Id</th>
+                <td class="col-sm-9">{{ food.id }}</td>
+            </tr>
+            <tr>
+                <th class="col-sm-3">Name</th>
+                <td class="col-sm-9">{{ food.name }}</td>
+            </tr>
+            <tr>
+                <th class="col-sm-3">Description</th>
+                <td class="col-sm-9">{{ food.description }}</td>
+            </tr>
+            <tr>
+                <th class="col-sm-3">Price</th>
+                <td class="col-sm-9">{{ food.price }} Dinars</td>
+            </tr>
+            <tr>
+                <th class="col-sm-3">Is_available</th>
+                <td class="col-sm-9">{{ food.isAvailable ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    {% if is_granted('ROLE_ADMIN') %}
+<div class="ml-5" style="display:flex;gap:10px;padding-left:60px">
+<div>
+    <a class="btn btn-success" href="{{ path('app_food_edit', {'id': food.id}) }}">edit</a>
+</div>
+    <form method="post" action="{{ path('app_food_delete', {'id': food.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ food.id) }}">
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+    </form>
+</div>
+
+    {% endif %}
+{% endblock %}

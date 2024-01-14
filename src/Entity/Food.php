@@ -23,7 +23,7 @@ class Food
 
     #[Vich\UploadableField(mapping: 'food_images', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
-    
+
     #[ORM\Column(nullable: true)]
     private ?string $imageName = null;
 
@@ -44,7 +44,7 @@ class Food
 
     // #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'food')]
     // private Collection $orders;
-    
+
     public function __construct()
     {
         $this->OrderDetail = new ArrayCollection();
@@ -150,7 +150,8 @@ class Food
         return $this;
     }
 
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return $this->name;
     }
 
@@ -183,5 +184,4 @@ class Food
 
         return $this;
     }
-
 }

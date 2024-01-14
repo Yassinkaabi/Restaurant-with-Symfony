@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
 use App\Entity\Food;
 use App\Form\FoodType;
+use App\Repository\CategorieRepository;
 use App\Repository\FoodRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,10 +54,12 @@ class FoodController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_food_show', methods: ['GET'])]
-    public function show(Food $food): Response
+    public function show(Food $food, CategorieRepository $categorieRepository): Response
     {
+
         return $this->render('food/show.html.twig', [
             'food' => $food,
+            'categorie' => $categorieRepository->findAll(),
         ]);
     }
 

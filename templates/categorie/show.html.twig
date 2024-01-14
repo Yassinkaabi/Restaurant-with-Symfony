@@ -1,54 +1,42 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Categorie{% endblock %}
+{% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Categorie</h1>
-<div class="mt-5 mx-5">
+
+<div class="container mt-5">
+    <h2>Détails du categorie</h2>
+
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ categorie.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
+                <th scope="row">Nom de categorie</th>
                 <td>{{ categorie.name }}</td>
             </tr>
             <tr>
-                <th>Food Items</th>
+                <th scope="row">Food Items</th>
                 <td>
-                    <ul style="display:flex;flex-direction:column">
-                        {% for food in categorie.menuItems %}
-                        {% if food %}
-                        <div style="display:flex;align-items:center;gap:15px">
-                        <tr>
-                            <td>
-                                <img src="" alt="image" />
-                            </td>
-                            <td>                            
-                                <a style="text-decoration:none" href="{{ path('app_food_show', {'id': food.id}) }}">
-                                    <li style="list-style: none;">{{ food.name }}: </li>
-                                </a>
-                            </td>
-                            <td>
-                                <span style="color:red"> {{ food.price }} Dinars</span>
-                            </td>
-                        </tr>
-                        </div>
-                        {% endif %}
-                        {% else %}
-                            <li> Liste vide </li>
-                        {% endfor %}
-                    </ul>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Nom du Plat</th>
+                                    <th scope="col">Cout</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for food in categorie.menuItems %}
+                                    <tr>
+                                        <td><img src="{{ vich_uploader_asset(food, 'imageFile') }}" alt="image" style="max-width: 50px;" /></td>
+                                        <td><a href="{{ path('app_food_show', {'id': food.id}) }}">{{ food.name }}</a></td>
+                                        <td><span style="color: red;">{{ food.price }} Dinars</span></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-    {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('app_categorie_index') }}">All categories of food</a>
-    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">Edit</a>
-    {{ include('categorie/_delete_form.html.twig') }}
-    {% endif %}
+
 {% endblock %}
+

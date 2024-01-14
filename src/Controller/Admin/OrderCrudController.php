@@ -21,6 +21,7 @@ class OrderCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->hideOnForm(),
             DateField::new('Date_Placed')
                 ->setFormat('dd-MM-yyyy HH:mm')
                 ->setLabel('Date Placed'),

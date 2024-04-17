@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Order;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +22,14 @@ class OrderType extends AbstractType
                 'by_reference' => false,
                 'label' => false,
             ])
-            ->add('submit', SubmitType::class, [
+            ->add('status', ChoiceType::class, [
+                'choices' => [
+                    'Pending' => 'pending',
+                    'Success' => 'success',
+                ],
+                'label' => 'Status',
+                'data' => 'pending', 
+            ])->add('submit', SubmitType::class, [
                 'label' => 'Create Order',
             ]);
     }

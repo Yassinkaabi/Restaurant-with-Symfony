@@ -1,0 +1,47 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Users
+{% endblock %}
+
+{% block content %}
+	<div class="mb-4">
+		<a href="{{ path('create_user') }}" class="btn btn-primary">Create</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Role</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.username }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.phone }}</td>
+					<td>
+						{% for role in user.roles %}
+							{{ role }}
+							{% if not loop.last %},
+							{% endif %}
+						{% endfor %}
+					</td>
+					<td>
+						<a href="{{ path('edit_user', {'username': user.username, 'id': user.id}) }}" class="btn btn-primary">Edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

@@ -1,9 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
-{% block body %}
-    {% if app.user %}
-        <div class="mb-3">
-            Hello {{ app.user.username }} ! 
-        </div>
-    {% endif %}
+{% block title %}Restaurant
+{% endblock %}
+
+{% block content %}
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>name</th>
+				<th>Adresse</th>
+				<th>Phone</th>
+				<th>email</th>
+				<th>Menu</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for restaurant in restaurants %}
+				<tr>
+					<td>{{ restaurant.id }}</td>
+					<td>{{ restaurant.libelle }}</td>
+					<td>{{ restaurant.adresse }}</td>
+					<td>{{ restaurant.tel }}</td>
+					<td>{{ restaurant.email }}</td>
+					<td>
+						{% if restaurant.menu is not empty %}
+							<ul>
+								{% for menu in restaurant.menu %}
+
+									<a href="{{ path('app_menu_show', {'id': menu.id}) }}">
+										<li>{{ menu.menu }}</li>
+									</a>
+								{% endfor %}
+							</ul>
+						{% else %}
+							No menu available
+						{% endif %}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
 {% endblock %}

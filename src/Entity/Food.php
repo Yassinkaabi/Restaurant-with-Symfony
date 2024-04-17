@@ -41,7 +41,7 @@ class Food
 
     #[ORM\OneToMany(mappedBy: 'food', targetEntity: DetailCommande::class)]
     private Collection $OrderDetail;
-
+    
     // #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'food')]
     // private Collection $orders;
 
@@ -184,4 +184,5 @@ class Food
 
         return $this;
     }
+
 }

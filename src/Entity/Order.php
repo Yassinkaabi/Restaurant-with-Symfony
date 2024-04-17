@@ -17,7 +17,7 @@ class Order
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type:'datetime')]
+    #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $date_placed;
 
     #[ORM\Column(length: 255, options: ['default' => 'pending'])]
@@ -26,19 +26,13 @@ class Order
     #[ORM\ManyToOne(inversedBy: 'orders')]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'order_id', targetEntity: DetailCommande::class, cascade:['persist'])]
+    #[ORM\OneToMany(mappedBy: 'order_id', targetEntity: DetailCommande::class, cascade: ['persist'])]
     private Collection $detailsCmd;
-
-    // #[ORM\ManyToMany(targetEntity: Food::class, inversedBy: 'orders')]
-    // #[ORM\ManyToMany(targetEntity: Food::class, inversedBy: 'orders')]
-    // #[ORM\JoinTable(name: 'order_food')]
-    // private Collection $food;
 
     public function __construct()
     {
         $this->date_placed = new \DateTime();
         $this->detailsCmd = new ArrayCollection();
-        // $this->food = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -112,8 +106,8 @@ class Order
         return $this;
     }
 
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return $this->id;
     }
-    
 }

@@ -94,4 +94,5 @@ class Menu
     public function __toString(): string {
         return $this->menu;
     }
+
 }

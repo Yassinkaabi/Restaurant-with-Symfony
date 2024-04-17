@@ -1,6 +1,6 @@
-{% extends "base.html.twig" %}
+{% extends 'dashboard.html.twig' %}
 
-{% block body %}
+{% block content %}
 
 <div class="container mt-5">
     <h2>Détails du categorie</h2>
@@ -26,7 +26,7 @@
                                 {% for food in categorie.menuItems %}
                                     <tr>
                                         <td><img src="{{ vich_uploader_asset(food, 'imageFile') }}" alt="image" style="max-width: 50px;" /></td>
-                                        <td><a href="{{ path('app_food_show', {'id': food.id}) }}">{{ food.name }}</a></td>
+                                        <td><a href="{{ path('app_food_show_admin', {'id': food.id}) }}">{{ food.name }}</a></td>
                                         <td><span style="color: red;">{{ food.price }} Dinars</span></td>
                                     </tr>
                                 {% endfor %}

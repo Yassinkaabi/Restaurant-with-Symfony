@@ -22,26 +22,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 8, unique: true)]
+    private ?string $phone = null;
+
     #[ORM\Column]
     private array $roles = [];
-    
-    #[ORM\ManyToMany(targetEntity: Restaurant::class, mappedBy:'users')]
+
+    #[ORM\ManyToMany(targetEntity: Restaurant::class, mappedBy: 'users')]
     private $restaurants;
 
-    #[ORM\OneToMany(mappedBy:'user', targetEntity:Reservation::class)]
-    private $reservations;    
-    
-    // #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
-    // private Collection $orders;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
+    private $reservations;
 
     public function __construct()
     {
-    $this->roles = ['ROLE_USER'];
-    $this->restaurants = new ArrayCollection();
-    $this->reservations = new ArrayCollection();
-    $this->order_id = new ArrayCollection();
-    $this->comments = new ArrayCollection();
-
+        $this->roles = ['ROLE_USER'];
+        $this->restaurants = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
+        $this->order_id = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
     /**
      * @var string The hashed password
@@ -71,6 +70,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): static
+    {
+        $this->phone = $phone;
 
         return $this;
     }
@@ -208,5 +219,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    
 }

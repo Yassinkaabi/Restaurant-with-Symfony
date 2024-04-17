@@ -35,7 +35,7 @@ class Reservation
 
     #[ORM\Column(type: 'datetime', options: ['default' => 'CURRENT_TIMESTAMP'])]    
     private ?\DateTimeInterface $reservationTime = null;
-    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -112,4 +112,5 @@ class Reservation
 
         return $this;
     }
+
 }

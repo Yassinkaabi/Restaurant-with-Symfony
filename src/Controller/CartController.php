@@ -35,7 +35,6 @@ class CartController extends AbstractController
 
             }
         }
-
         return $this->render('cart/index.html.twig', compact('data' , 'total'));
     }
 

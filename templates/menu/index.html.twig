@@ -35,7 +35,7 @@
                                     <div class="text">
                                         <div class="d-flex">
                                             <div class="one-half">
-                                                <a style="text-decoration:none;"  href="{{ path('app_categorie_show', {'id': category.id}) }}">
+                                                {# <a style="text-decoration:none;"  href="{{ path('app_categorie_show', {'id': category.id}) }}"> #}
                                                 <h3>{{ category.name }}</h3></a>
                                                 <div style="display:flex;flex-direction:column;justify-content: space-between;">                                                
                                                 {% for food in category.menuItems|slice(0, 5) %}

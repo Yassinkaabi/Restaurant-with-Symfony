@@ -15,10 +15,10 @@ class DetailCommande
     private ?int $id = null;
 
     #[ORM\Column(type: 'integer')]
-    private $quantity;  
+    private $quantity;
 
-    #[ORM\Column(type: 'integer')]
-    private $price;
+    #[ORM\Column(length: 255)]
+    private ?float $price = 0.0;
 
     #[ORM\ManyToOne(inversedBy: 'detailsCmd')]
     private ?Order $order_id = null;
@@ -43,18 +43,18 @@ class DetailCommande
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?string
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(string $price): static
     {
         $this->price = $price;
 
         return $this;
     }
-    
+
     public function getOrderId(): ?Order
     {
         return $this->order_id;

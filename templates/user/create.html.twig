@@ -1,0 +1,16 @@
+{# templates/user/edit.html.twig #}
+{% extends 'dashboard.html.twig' %}
+
+{% block title %} User
+{% endblock %}
+
+{% block content %}
+	<h1>create User account</h1>
+	{{ form_start(registrationForm) }}
+	{{ form_row(registrationForm.username) }}
+	{{ form_row(registrationForm.email) }}
+	{{ form_row(registrationForm.plainPassword) }}
+	{{ form_row(registrationForm.roles) }}
+	<button type="submit" class="btn btn-primary">Save</button>
+	{{ form_end(registrationForm) }}
+{% endblock %}

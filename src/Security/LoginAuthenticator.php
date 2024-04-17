@@ -50,7 +50,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         // Check if the user has the 'ROLE_ADMIN' role
         if (in_array('ROLE_ADMIN', $rolesTab, true)) {
             // Redirect admin to the admin page
-            return new RedirectResponse($this->urlGenerator->generate('admin'));
+            return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         } else {
             // Redirect regular users to the user page
             return new RedirectResponse($this->urlGenerator->generate('app_home'));

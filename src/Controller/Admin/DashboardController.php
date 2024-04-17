@@ -28,7 +28,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
-    #[Route('/admin', name: 'admin')]
+    #[Route('/adminside', name: 'adminside')]
     public function index(): Response
     {
         // return parent::index();

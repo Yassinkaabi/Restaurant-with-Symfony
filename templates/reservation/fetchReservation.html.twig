@@ -1,0 +1,48 @@
+{% extends "dashboard.html.twig" %}
+
+{% block title %}Reservation
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h1 class="mt-5 mb-4">Réservations</h1>
+
+		<div class="table-responsive">
+			<table class="table table-hover" style="padding:20px">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Username</th>
+						<th scope="col">Content</th>
+						<th scope="col">Restaurant</th>
+						<th scope="col">Table</th>
+						<th scope="col">Date</th>
+						<th scope="col">Réservé</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for reservation in reservations %}
+						<tr>
+							<td>{{ reservation.user.id }}</td>
+							<td>{{ reservation.user.username }}</td>
+							<td>{{ reservation.content }}</td>
+							<td>{{ reservation.restaurant }}</td>
+							<td>{{ reservation.table }}</td>
+							<td>{{ reservation.reservationTime ? reservation.reservationTime.format('H:i d-m-Y') : '' }}</td>
+							<td>{{ reservation.isverified ? 'Yes' : 'No' }}</td>
+							<td>
+								<a href="{{ path('app_reservation_show_admin', {'id': reservation.id}) }}" class="btn btn-info">
+									<i class="fa-solid fa-eye"></i>
+								</a>
+								<a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn btn-secondary">
+									<i class="fa-solid fa-pen-to-square"></i>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

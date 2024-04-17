@@ -1,0 +1,40 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Menu
+{% endblock %}
+
+{% block content %}
+	<div style="display:flex;justify-content:space-between" class="mb-5">
+		<h1>Menu</h1>
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('app_menu_new') }}" class="btn btn-primary">Create new</a>
+		{% endif %}
+
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>name</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for menu in menus %}
+				<tr>
+					<td>{{ menu.id }}</td>
+					<td>{{ menu.menu }}</td>
+					<td>
+						<a href="{{ path('app_menu_edit', {'id':menu.id}) }} ">Edit
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

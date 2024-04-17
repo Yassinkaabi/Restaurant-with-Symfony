@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}
+	Chmou.la
+{% endblock %}
 
 {% block body %}
 
@@ -13,218 +15,201 @@
 					<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 						<div class="col-md-12 ftco-animate">
 							<div class="text w-100 mt-5 text-center">
-								<span class="subheading">Chmou.la Restaurant</h2></span>
-								<h1>Cuisiner depuis</h1>
-								<span class="subheading-2">1990</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="slider-item js-fullheight" style="background-image:url(image/bg_2.jpg);">
-				<div class="overlay"></div>
-				<div class="container">
-					<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-						<div class="col-md-12 ftco-animate">
-							<div class="text w-100 mt-5 text-center">
-								<span class="subheading">Chmou.la Restaurant</h2></span>
-								<h1>Meilleure qualité</h1>
-								<span class="subheading-2 sub">Nourriture</span>
-							</div>
+								<span class="subheading">Chmou.la Restaurant</h2>
+							</span>
+							<h1>Cuisiner depuis</h1>
+							<span class="subheading-2">1990</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-						
-	<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
-		<div class="container">
-			<div class="row no-gutters">
-				
-				<div class="col-sm-8 wrap-about py-5 ftco-animate img mx-auto" style="background-image: url(image/aboutr.jpg);">
-					<div class="row pb-5 pb-md-0">
-						<div class="col-md-12 col-lg-7">
-							<div class="heading-section mt-5 mb-4">
-								<div class="pl-lg-3 ml-md-5">
-									<span class="subheading">À propos</span>
-									<h2 class="mb-4">Bienvenue sur Chmou.la</h2>
-								</div>
-							</div>
-							<div class="pl-lg-3 ml-md-5">
-							<p>Explorez une expérience gastronomique inoubliable en réservant une table dans notre restaurant. Plongez dans un monde de saveurs exquises, où chaque plat est une aventure culinaire soigneusement orchestrée. Notre équipe dévouée s'engage à vous offrir un service exceptionnel dans un cadre accueillant et élégant. Réservez dès maintenant pour vous assurer une place et laissez-nous vous guider à travers un voyage gustatif où chaque bouchée est une découverte de délices. Que ce soit une célébration spéciale, un rendez-vous romantique ou une simple soirée entre amis, nous sommes impatients de vous offrir une expérience mémorable. Réservez votre table aujourd'hui et préparez-vous à déguster la perfection culinaire.</p>
-        						<a href="{{ path('app_reservation_new') }}" class="btn btn-primary">Réservez une table maintenant</a>
-							</div>
-						</div>
+
+		<div class="slider-item js-fullheight" style="background-image:url(image/bg_2.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+					<div class="col-md-12 ftco-animate">
+						<div class="text w-100 mt-5 text-center">
+							<span class="subheading">Chmou.la Restaurant</h2>
+						</span>
+						<h1>Meilleure qualité</h1>
+						<span class="subheading-2 sub">Nourriture</span>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</div></section><section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
+<div class="container">
+	<div class="row no-gutters">
 
-    <section class="ftco-section ftco-intro" style="background-image: url(image/bg_3.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<span>RESERVER MAINTENANT</span>
-					<h2>Dîners privés &amp; Happy Hours</h2>
+		<div class="col-sm-8 wrap-about py-5 ftco-animate img mx-auto" style="background-image: url(image/aboutr.jpg);">
+			<div class="row pb-5 pb-md-0">
+				<div class="col-md-12 col-lg-7">
+					<div class="heading-section mt-5 mb-4">
+						<div class="pl-lg-3 ml-md-5">
+							<span class="subheading">À propos</span>
+							<h2 class="mb-4">Bienvenue sur Chmou.la</h2>
+						</div>
+					</div>
+					<div class="pl-lg-3 ml-md-5">
+						<p>Explorez une expérience gastronomique inoubliable en réservant une table dans notre restaurant. Plongez dans un monde de saveurs exquises, où chaque plat est une aventure culinaire soigneusement orchestrée. Notre équipe dévouée s'engage à vous offrir un service exceptionnel dans un cadre accueillant et élégant. Réservez dès maintenant pour vous assurer une place et laissez-nous vous guider à travers un voyage gustatif où chaque bouchée est une découverte de délices. Que ce soit une célébration spéciale, un rendez-vous romantique ou une simple soirée entre amis, nous sommes impatients de vous offrir une expérience mémorable. Réservez votre table aujourd'hui et préparez-vous à déguster la perfection culinaire.</p>
+						<a href="{{ path('app_reservation_new') }}" class="btn btn-primary">Réservez une table maintenant</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-			
-			{# Block Food Home #}
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-2">
-				<div class="col-md-7 text-center heading-section ftco-animate">
-					<span class="subheading">Spécialités</span>
-					<h2 class="mb-4">Notre Menu</h2>
-				</div>
-			</div>
-			<div class="row">
-			{% for menu in menus %}
-				<div class="col-md-6 col-lg-4">
-					<div class="menu-wrap">
+	</div>
+</div></section><section class="ftco-section ftco-intro" style="background-image: url(image/bg_3.jpg);">
+<div class="overlay"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<span>RESERVER MAINTENANT</span>
+			<h2>Dîners privés &amp; Happy Hours</h2>
+		</div>
+	</div>
+</div></section>{# Block Food Home #}<section class="ftco-section">
+<div class="container">
+	<div class="row justify-content-center mb-5 pb-2">
+		<div class="col-md-7 text-center heading-section ftco-animate">
+			<span class="subheading">Spécialités</span>
+			<h2 class="mb-4">Notre Menu</h2>
+		</div>
+	</div>
+	<div class="row">
+		{% for menu in menus %}
+			<div class="col-md-6 col-lg-4">
+				<div class="menu-wrap">
 
-						<div class="heading-menu text-center ftco-animate">
-							<h3>{{ menu.menu }}</h3>
-						</div>
+					<div class="heading-menu text-center ftco-animate">
+						<h3>{{ menu.menu }}</h3>
+					</div>
 					{% for category in menu.categories %}
 						<div class="menus d-flex ftco-animate">
 							<div class="menu-img img" style="background-image: url(image/breakfast-1.jpg);"></div>
 							<div class="text">
 								<div class="d-flex">
 									<div class="one-half">
-                                                <a style="text-decoration:none;"  href="{{ path('app_categorie_show', {'id': category.id}) }}">
-                                                <h3>{{ category.name }}</h3></a>
-                                                <div style="display:flex;flex-direction:column;justify-content: space-between;">                                                
-                                                {% for food in category.menuItems|slice(0, 5) %}
-                                                <a style="text-decoration:none;color:#222" href="{{ path('app_food_show', {'id': food.id}) }}">
-                                                    {{ food.name }}</a>
-                                                    {# <span style="color:red" class="price">{{ food.price }}DT</span> #}
-                                                {% endfor %}
-                                                </div>
-                                	</div>
-								</div>
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			{% endfor %}	
-			</div>
-		</div>
-
-	</section>
-			
-			{# Block comment #}
-	<section class="ftco-section testimony-section" style="background-image: url(image/bg_5.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row justify-content-center mb-3 pb-2">
-				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-					<span class="subheading">Testimony</span>
-					<h2 class="mb-4">Happy Customer</h2>
-				</div>
-			</div>
-			<div class="row ftco-animate justify-content-center">
-				<div class="col-md-7">
-					<div class="carousel-testimony owl-carousel ftco-owl">
-							{% for comment in comments %}
-						<div class="item">
-							<div class="testimony-wrap text-center">
-								<div class="text p-3">
-									<p class="mb-4">{{ comment.content }}</p>
-									<div class="user-img mb-4" style="background-image: url(image/person_1.jpg)">
-										<span class="quote d-flex align-items-center justify-content-center">
-											<i class="fa fa-quote-left"></i>
-										</span>
+										<a style="text-decoration:none;" href="{{ path('app_categorie_show', {'id': category.id}) }}">
+											<h3>{{ category.name }}</h3>
+										</a>
+										<div style="display:flex;flex-direction:column;justify-content: space-between;">
+											{% for food in category.menuItems|slice(0, 5) %}
+												<a style="text-decoration:none;color:#222" href="{{ path('app_food_show', {'id': food.id}) }}">
+													{{ food.name }}</a>
+												{# <span style="color:red" class="price">{{ food.price }}DT</span> #}
+											{% endfor %}
+										</div>
 									</div>
-									<p class="name">{{ comment.user }}</p>
-									<span class="position">Customer</span>
 								</div>
 							</div>
 						</div>
-							{% endfor %}
-					</div>
-				</div>
-				<div style="text-align:center; margin-top:20px">
-					<button class="btn btn-white btn-outline-white" onclick="showForm()">laissez un commentaire</button>
-					<div id="commentForm" style="display: none;"> 
-					{% if app.user %}
-						{{ form_start(form, {'attr': {'class': 'comment-form'}}) }}
-						<div class="form-group">
-							{{ form_label(form.content) }}
-							{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
-						</div>
-						<button type="submit" class="btn btn-primary">Envoyer</button>
-						{{ form_end(form) }}
-						<div class="comment-success-message mt-4" style="display: none; color:#fff">Le commentaire a été envoyé avec succès.</div>
-					{% else %}
-						<div class="alert alert-warning mt-5" role="alert">
-							Vous devez vous connecter pour laisser un commentaire. <a href="{{ path('app_login') }}">connexion</a>
-						</div>
-					{% endif %}
-					</div>
+					{% endfor %}
 				</div>
 			</div>
+		{% endfor %}
+	</div>
+</div></section>{# Block comment #}<section class="ftco-section testimony-section" style="background-image: url(image/bg_5.jpg);">
+<div class="overlay"></div>
+<div class="container">
+	<div class="row justify-content-center mb-3 pb-2">
+		<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+			<span class="subheading">Testimony</span>
+			<h2 class="mb-4">Happy Customer</h2>
 		</div>
-	</section>
-			{# Block Reservation #}
-	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-intro" style="background-color:#E52B34;margin-top:150px">
-		<div class="container py-5">
-			<div class="row py-2">
-				<div class="col-md-12 text-center">
-					<h2>Nous préparons des aliments délicieux  &amp; nutritifs</h2>
-					<a href="{{ path('app_reservation_new') }}" class="btn btn-white btn-outline-white">Réservez une table maintenant</a>
-				</div>
+	</div>
+	<div class="row ftco-animate justify-content-center">
+		<div class="col-md-7">
+			<div class="carousel-testimony owl-carousel ftco-owl">
+				{% for comment in comments %}
+					<div class="item">
+						<div class="testimony-wrap text-center">
+							<div class="text p-3">
+								<p class="mb-4">{{ comment.content }}</p>
+								<div class="user-img mb-4" style="background-image: url(image/person_1.jpg)">
+									<span class="quote d-flex align-items-center justify-content-center">
+										<i class="fa fa-quote-left"></i>
+									</span>
+								</div>
+								<p class="name">{{ comment.user }}</p>
+								<span class="position">Customer</span>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
 			</div>
 		</div>
-	</section>
+		<div style="text-align:center; margin-top:20px">
+			<button class="btn btn-white btn-outline-white" onclick="showForm()">laissez un commentaire</button>
+			<div id="commentForm" style="display: none;">
+				{% if app.user %}
+					{{ form_start(form, {'attr': {'class': 'comment-form'}}) }}
+					<div class="form-group">
+						{{ form_label(form.content) }}
+						{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+					</div>
+					<button type="submit" class="btn btn-primary">Envoyer</button>
+					{{ form_end(form) }}
+					<div class="comment-success-message mt-4" style="display: none; color:#fff">Le commentaire a été envoyé avec succès.</div>
+				{% else %}
+					<div class="alert alert-warning mt-5" role="alert">
+						Vous devez vous connecter pour laisser un commentaire.
+						<a href="{{ path('app_login') }}">connexion</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div></section>{# Block Reservation #}<section class="ftco-section ftco-no-pt ftco-no-pb ftco-intro" style="background-color:#E52B34;margin-top:150px">
+<div class="container py-5">
+	<div class="row py-2">
+		<div class="col-md-12 text-center">
+			<h2>Nous préparons des aliments délicieux  &amp; nutritifs</h2>
+			<a href="{{ path('app_reservation_new') }}" class="btn btn-white btn-outline-white">Réservez une table maintenant</a>
+		</div>
+	</div>
+</div></section><section class="ftco-section ftco-no-pt ftco-no-pb ftco-intro" style="background-color:#494e53;margin-top:150px">
+<div class="container py-5">
+	<div class="row py-2">
+		<div class="col-md-12 text-center">
+			<h2> Découvrez notre service de livraison de nourriture </h2>
+			<a href="{{ path('app_menu_index') }}" class="btn btn-white btn-outline-white">Délivrée Dés maintenant</a>
+		</div>
+	</div>
+</div></section><script src="https://code.jquery.com/jquery-3.6.4.min.js"></script><script>
+$(document).ready(function () {
+$('.comment-form').submit(function (e) {
+e.preventDefault(); // Prevent the default form submission
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-							$(document).ready(function () {
-								$('.comment-form').submit(function (e) {
-									e.preventDefault(); // Prevent the default form submission
+var form = $(this);
+var url = form.attr('action');
+var method = form.attr('method');
+var data = form.serialize();
 
-									var form = $(this);
-									var url = form.attr('action');
-									var method = form.attr('method');
-									var data = form.serialize();
-
-									// Make the AJAX request
-									$.ajax({
-										url: url,
-										method: method,
-										data: data,
-										success: function (response) {
-											// Display the success message and hide the form
-											$('.comment-form').hide();
-											$('.comment-success-message').show();
-											setTimeout(function () {
-                            					$('.comment-success-message').hide();
-                        					}, 3000);
-										},
-										error: function (error) {
-											console.log('Error:', error);
-										}
-									});
-								});
-							});
-</script>
-<script>
-function showForm() {
-    var commentForm = document.getElementById('commentForm');
-    var currentDisplay = commentForm.style.display;
-
-    // If the form is currently visible, hide it; otherwise, show it
-    commentForm.style.display = (currentDisplay === 'block' || currentDisplay === '') ? 'none' : 'block';
+// Make the AJAX request
+$.ajax({
+url: url,
+method: method,
+data: data,
+success: function (response) { // Display the success message and hide the form
+$('.comment-form').hide();
+$('.comment-success-message').show();
+setTimeout(function () {
+$('.comment-success-message').hide();
+}, 3000);
+},
+error: function (error) {
+console.log('Error:', error);
 }
+});
+});
+});</script><script>
+function showForm() {
+var commentForm = document.getElementById('commentForm');
+var currentDisplay = commentForm.style.display;
 
-</script>
-		<script src="{{ asset('js/main.js') }}"></script>
-{% endblock %}
+// If the form is currently visible, hide it; otherwise, show it
+commentForm.style.display = (currentDisplay === 'block' || currentDisplay === '') ? 'none' : 'block';
+}</script><script src="{{ asset('js/main.js') }}"></script>{% endblock %}

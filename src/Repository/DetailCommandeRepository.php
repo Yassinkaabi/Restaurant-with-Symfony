@@ -21,28 +21,47 @@ class DetailCommandeRepository extends ServiceEntityRepository
         parent::__construct($registry, DetailCommande::class);
     }
 
-//    /**
-//     * @return DetailCommande[] Returns an array of DetailCommande objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('d.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?DetailCommande
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findDetailsOrder(int $orderId): array
+    {
+        return $this->createQueryBuilder('detail')
+            ->andWhere('detail.order_id = :order_id')
+            ->setParameter('order_id', $orderId)
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    public function findFoodDetailsForOrder(int $detail): array
+    {
+        return $this->createQueryBuilder('detail')
+            ->andWhere('detail.food = :food')
+            ->setParameter('food', $detail)
+            ->getQuery()
+            ->getResult();
+    }
+    //    /**
+    //     * @return DetailCommande[] Returns an array of DetailCommande objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('d')
+    //            ->andWhere('d.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('d.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?DetailCommande
+    //    {
+    //        return $this->createQueryBuilder('d')
+    //            ->andWhere('d.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

@@ -1,0 +1,13 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Edit Order
+{% endblock %}
+
+{% block content %}
+
+	{{ include('order/_form.html.twig', {'button_label': 'Update'}) }}
+
+	<a href="{{ path('app_orders_admin') }}">back to list</a>
+
+	{# {{ include('reservation/_delete_form.html.twig') }} #}
+{% endblock %}

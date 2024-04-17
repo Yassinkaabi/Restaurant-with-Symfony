@@ -1,24 +1,45 @@
-{# templates/order/show.html.twig #}
-{% extends 'base.html.twig' %}
+{# templates/order/showOrderAllUser.html.twig #}
+{% extends 'dashboard.html.twig' %}
 
-{% block body %}
-    <div class="container">
-        <h1>Order Details</h1>
+{% block content %}
+	<div class="container">
+		<h1>Order Details</h1>
 
-        <dl class="row">
-            <dt class="col-sm-3">ID:</dt>
-            <dd class="col-sm-9">{{ order.id }}</dd>
+		<dl class="row">
+			<dt class="col-sm-3">ID:</dt>
+			<dd class="col-sm-9">{{ order.id }}</dd>
 
-            <dt class="col-sm-3">Date Placed:</dt>
-            <dd class="col-sm-9">{{ order.datePlaced|date('Y-m-d H:i:s') }}</dd>
+			<dt class="col-sm-3">Date Placed:</dt>
+			<dd class="col-sm-9">{{ order.datePlaced|date('Y-m-d H:i:s') }}</dd>
 
-            <dt class="col-sm-3">Status:</dt>
-            <dd class="col-sm-9">{{ order.status }}</dd>
+			<dt class="col-sm-3">Status:</dt>
+			<dd class="col-sm-9">{{ order.status }}</dd>
 
-            <dt class="col-sm-3">User:</dt>
-            <dd class="col-sm-9">{{ order.user.username }}</dd>
-        </dl>
+			<dt class="col-sm-3">User:</dt>
+			<dd class="col-sm-9">{{ order.user.username }}</dd>
+		</dl>
 
-        <a href="{{ path('app_orders_index') }}" class="btn btn-primary">Back to list</a>
-    </div>
+		<h2>Food Details</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Food ID</th>
+					<th>Quantity</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for foodDetail in foodDetails %}
+					<tr>
+						<td>{{ foodDetail.food.id }}</td>
+						<td>{{ foodDetail.order.id }}</td>
+						<td>{{ foodDetail.quantity }}</td>
+						<td>{{ foodDetail.price }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_orders_admin') }}" class="btn btn-primary">Back to list</a>
+	</div>
 {% endblock %}

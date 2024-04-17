@@ -1,11 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block title %}New Menu{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Create new Menu</h1>
 
-    {{ include('menu/_form.html.twig') }}
+    <div class="container" style="padding:50px 20px 0 20px">
+        <h1>Create New Food</h1>
+        {{ form_start(form, {'attr': {'class': 'mt-4'}}) }}
 
-    <a href="{{ path('app_menu_index') }}">back to list</a>
+        <div class="form-group">
+            {{ form_label(form.menu, 'Name') }}
+            {{ form_widget(form.menu, {'attr': {'class': 'form-control'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.menu) }}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            {{ form_label(form.restaurant, 'Restaurant') }}
+            {{ form_widget(form.restaurant, {'attr': {'class': 'form-control'}}) }}
+            <div class="invalid-feedback">
+                {{ form_errors(form.restaurant) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+        {{ form_end(form) }}
+
+        <a href="{{ path('app_food_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+    </div>
 {% endblock %}
